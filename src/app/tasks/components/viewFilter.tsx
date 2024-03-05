@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
-import { Button } from '../ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '../../../components/ui/popover'
+import { Button } from '../../../components/ui/button'
 import { CheckIcon, MixerHorizontalIcon } from '@radix-ui/react-icons'
 import classNames from 'classnames'
-import { Separator } from '../ui/separator'
+import { Separator } from '../../../components/ui/separator'
 
 function ViewFilter() {
   const [open, setOpen] = useState(false)

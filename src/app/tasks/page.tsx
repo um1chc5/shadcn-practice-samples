@@ -1,7 +1,7 @@
 import TaskCombobox from '@/components/custom/taskCombobox'
-import ViewFilter from '@/components/tasks/view'
 import { Input } from '@/components/ui/input'
 import { priorities, statusList } from '@/constants/tasksFilters'
+import ViewFilter from './components/viewFilter'
 
 function TasksMangement() {
   return (
