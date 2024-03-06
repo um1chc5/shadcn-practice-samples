@@ -25,6 +25,12 @@ function ViewFilter() {
   ]
   const [checkedViews, setCheckedViews] = useState(views)
 
+  const handleViewCheck = (index: number) => () => {
+    setCheckedViews((prev) =>
+      prev.map((view, i) => (i === index ? { ...view, checked: !view.checked } : view)),
+    )
+  }
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className="ml-2" asChild>
@@ -44,13 +50,14 @@ function ViewFilter() {
         </div>
         <Separator />
         <div className="p-1">
-          {views.map((view, index) => (
+          {checkedViews.map((view, index) => (
             <button
+              onClick={handleViewCheck(index)}
               key={view.title}
               className="w-full flex text-sm gap-1 items-center px-1 py-1.5 hover:bg-accent rounded-lg"
             >
               <div className="w-6 flex justify-center">
-                <CheckIcon className={classNames({ 'opacity-0': !view.checked })} />
+                <CheckIcon className={classNames({ 'opacity-0': !checkedViews[index].checked })} />
               </div>
               <p>{view.title}</p>
             </button>

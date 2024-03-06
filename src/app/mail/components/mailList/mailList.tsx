@@ -1,17 +1,17 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { emailsData } from '@/data/mockData'
 import { monthsFromNow } from '@/lib/utils'
-import { Badge } from '../ui/badge'
-import { Card } from '../ui/card'
-import { ScrollArea } from '../ui/scroll-area'
-import { Input } from '../ui/input'
-import { Separator } from '../ui/separator'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Separator } from '@/components/ui/separator'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Input } from '@/components/ui/input'
+import { Card } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 
 function MailList() {
   const [mailView, setMailView] = useState('all')

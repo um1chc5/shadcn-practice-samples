@@ -1,7 +1,8 @@
 import TaskCombobox from '@/components/custom/taskCombobox'
 import { Input } from '@/components/ui/input'
-import { priorities, statusList } from '@/constants/tasksFilters'
 import ViewFilter from './components/viewFilter'
+import { priorities, statusList } from './data/tasksFilters'
+import DataTable from './components/dataTable'
 
 function TasksMangement() {
   return (
@@ -20,6 +21,9 @@ function TasksMangement() {
           <div className="ml-auto">
             <ViewFilter />
           </div>
+        </div>
+        <div>
+          <DataTable />
         </div>
       </div>
     </div>

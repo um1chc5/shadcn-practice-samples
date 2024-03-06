@@ -1,10 +1,10 @@
+import DefaultAvatar from '@/components/custom/defaultAvatar'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { Switch } from '@/components/ui/switch'
+import { Textarea } from '@/components/ui/textarea'
 import { emailsData } from '@/data/mockData'
-import DefaultAvatar from '../custom/defaultAvatar'
 import { formatISODate } from '@/lib/utils'
-import { Separator } from '../ui/separator'
-import { Textarea } from '../ui/textarea'
-import { Switch } from '../ui/switch'
-import { Button } from '../ui/button'
 
 interface Props {
   params: { id: number }

@@ -1,6 +1,6 @@
-import MailContentBody from '@/components/mailContent/mailContentBody'
-import MailContentHeader from '@/components/mailContent/mailContentHeader'
 import { Separator } from '@/components/ui/separator'
+import MailContentHeader from '../components/mailContent/mailContentHeader'
+import MailContentBody from '../components/mailContent/mailContentBody'
 
 interface Props {
   params: { id: number }

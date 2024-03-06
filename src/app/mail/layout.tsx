@@ -1,7 +1,7 @@
 import SideNav from '@/components/general/sidenav'
-import MailList from '@/components/mailList/mailList'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
 import React from 'react'
+import MailList from './components/mailList/mailList'
 
 function MailLayout({
   children,
@@ -10,7 +10,7 @@ function MailLayout({
 }>) {
   return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={18}>
+      <ResizablePanel defaultSize={18} minSize={8} collapsible={true} collapsedSize={4}>
         <SideNav />
       </ResizablePanel>
       <ResizableHandle withHandle />

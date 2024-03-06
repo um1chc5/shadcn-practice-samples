@@ -12,26 +12,31 @@ import {
 export const statusList = [
   {
     title: 'Backlog',
+    value: 'backlog',
     icon: <QuestionMarkCircledIcon />,
     id: 1,
   },
   {
     title: 'Todo',
+    value: 'todo',
     icon: <CircleIcon />,
     id: 2,
   },
   {
     title: 'In Progress',
+    value: 'in progress',
     icon: <StopwatchIcon />,
     id: 3,
   },
   {
     title: 'Done',
+    value: 'done',
     icon: <CheckCircledIcon />,
     id: 4,
   },
   {
     title: 'Canceled',
+    value: 'canceled',
     icon: <CrossCircledIcon />,
     id: 5,
   },
@@ -40,16 +45,19 @@ export const statusList = [
 export const priorities = [
   {
     title: 'Low',
+    value: 'low',
     icon: <ArrowDownIcon />,
     id: 1,
   },
   {
     title: 'Medium',
+    value: 'medium',
     icon: <ArrowRightIcon />,
     id: 2,
   },
   {
     title: 'High',
+    value: 'high',
     icon: <ArrowUpIcon />,
     id: 3,
   },
