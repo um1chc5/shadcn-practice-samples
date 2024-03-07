@@ -4,9 +4,11 @@ import { PlusCircledIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '../ui/command'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import React from 'react'
 import { Checkbox } from '../ui/checkbox'
+import { Badge } from '../ui/badge'
+import { Separator } from '../ui/separator'
 
 interface Props {
   title: string
@@ -16,6 +18,14 @@ interface Props {
     icon: React.ReactElement
     value: string
   }>
+}
+
+function FilterBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <Badge className="font-medium" variant={'secondary'}>
+      {children}
+    </Badge>
+  )
 }
 
 function TaskCombobox({ title, filterList }: Props) {
@@ -32,6 +42,11 @@ function TaskCombobox({ title, filterList }: Props) {
     )
   }
 
+  const checkedFilters = useMemo(() => checkedList.filter((item) => item.checked), [checkedList])
+
+  const clearAllFilters = () =>
+    setCheckedList((prev) => prev.map((filter) => ({ ...filter, checked: false })))
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className="ml-2" asChild>
@@ -43,6 +58,18 @@ function TaskCombobox({ title, filterList }: Props) {
         >
           <PlusCircledIcon />
           <p className="text-xs">{title}</p>
+          {checkedFilters.length > 0 && <Separator orientation="vertical" />}
+          {checkedFilters.length ? (
+            checkedFilters.length > 2 ? (
+              <FilterBadge>{checkedFilters.length} selected</FilterBadge>
+            ) : (
+              checkedFilters.map((filter) => (
+                <FilterBadge key={filter.value}>
+                  {filter.value[0].toUpperCase() + filter.value.slice(1)}
+                </FilterBadge>
+              ))
+            )
+          ) : null}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="p-0 w-[200px]" align="start">
@@ -67,6 +94,12 @@ function TaskCombobox({ title, filterList }: Props) {
             ))}
           </CommandGroup>
         </Command>
+        <Separator />
+        <div className="p-1">
+          <Button className="w-full font-normal" variant={'ghost'} onClick={clearAllFilters}>
+            Clear filters
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   )
