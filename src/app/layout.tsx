@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen `}>
+      <body className={`${inter.className} min-h-screen  `}>
         <div className="px-20">
           <div></div>
           <div className="max-w-[1336px] pt-8 mx-auto">

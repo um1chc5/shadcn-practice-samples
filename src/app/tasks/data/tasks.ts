@@ -1,4 +1,4 @@
-import { Task } from '../components/dataTable'
+import { Task } from '../types/task.type'
 
 export const taskData: Task[] = [
   {

@@ -1,8 +1,4 @@
-import TaskCombobox from '@/components/custom/taskCombobox'
-import { Input } from '@/components/ui/input'
-import ViewFilter from './components/viewFilter'
-import { priorities, statusList } from './data/tasksFilters'
-import DataTable from './components/dataTable'
+import TableContainer from './components/tableContainer'
 
 function TasksMangement() {
   return (
@@ -13,19 +9,7 @@ function TasksMangement() {
           Here&apos;s a list of your tasks for this month!
         </p>
       </div>
-      <div>
-        <div className="flex">
-          <Input placeholder="Filter tasks..." className="w-[250px] py-1" />
-          <TaskCombobox title="Status" filterList={statusList} />
-          <TaskCombobox title="Priority" filterList={priorities} />
-          <div className="ml-auto">
-            <ViewFilter />
-          </div>
-        </div>
-        <div>
-          <DataTable />
-        </div>
-      </div>
+      <TableContainer />
     </div>
   )
 }

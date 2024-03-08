@@ -1,6 +1,7 @@
 'use client'
 
 import { path } from '@/constants/path'
+import { uppercaseFirstLetter } from '@/lib/utils'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -19,7 +20,7 @@ function MainHeader() {
             'font-semibold bg-accent': pathName.includes(pathname),
           })}
         >
-          {key[0].toUpperCase() + key.slice(1)}
+          {uppercaseFirstLetter(key)}
         </Link>
       ))}
     </div>

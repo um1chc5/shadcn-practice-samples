@@ -43,3 +43,21 @@ export function formatISODate(isoDate: string): string {
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date)
   return formattedDate
 }
+
+export function uppercaseFirstLetter(word: string) {
+  return word[0].toUpperCase() + word.slice(1)
+}
+
+type Timer = ReturnType<typeof setTimeout>
+
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  timeout = 300,
+): (...args: Parameters<T>) => void {
+  let timer: Timer
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => func(...args), timeout) as Timer
+  }
+}

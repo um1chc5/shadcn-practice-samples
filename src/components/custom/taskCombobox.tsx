@@ -4,14 +4,25 @@ import { PlusCircledIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '../ui/command'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import React from 'react'
 import { Checkbox } from '../ui/checkbox'
 import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
+import classNames from 'classnames'
+import { Table } from '@tanstack/react-table'
+import { Task } from '@/app/tasks/types/task.type'
+import { uppercaseFirstLetter } from '@/lib/utils'
 
 interface Props {
+  /**
+   * @Property title: title of specific filter, this title is same as the coresponding id in tanstack table column defs
+   */
   title: string
+  /**
+   * @Property table: table instance created with useReactTable, providing table data and related methods
+   */
+  table: Table<Task>
   filterList: ReadonlyArray<{
     id: number
     title: string
@@ -28,7 +39,7 @@ function FilterBadge({ children }: { children: React.ReactNode }) {
   )
 }
 
-function TaskCombobox({ title, filterList }: Props) {
+function TaskCombobox({ title, filterList, table }: Props) {
   const [open, setOpen] = useState(false)
   const [checkedList, setCheckedList] = useState(
     filterList.map((filter) => ({ value: filter.value, checked: false })),
@@ -41,6 +52,18 @@ function TaskCombobox({ title, filterList }: Props) {
       ),
     )
   }
+
+  useEffect(() => {
+    table.setColumnFilters(
+      checkedFilters
+        .filter((filter) => filter.value)
+        .map((filter) => ({
+          id: title,
+          value: filter.value,
+        })),
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkedList])
 
   const checkedFilters = useMemo(() => checkedList.filter((item) => item.checked), [checkedList])
 
@@ -57,16 +80,14 @@ function TaskCombobox({ title, filterList }: Props) {
           className="border-dashed duration-200 flex items-center gap-2"
         >
           <PlusCircledIcon />
-          <p className="text-xs">{title}</p>
+          <p className="text-xs">{uppercaseFirstLetter(title)}</p>
           {checkedFilters.length > 0 && <Separator orientation="vertical" />}
           {checkedFilters.length ? (
             checkedFilters.length > 2 ? (
               <FilterBadge>{checkedFilters.length} selected</FilterBadge>
             ) : (
               checkedFilters.map((filter) => (
-                <FilterBadge key={filter.value}>
-                  {filter.value[0].toUpperCase() + filter.value.slice(1)}
-                </FilterBadge>
+                <FilterBadge key={filter.value}>{uppercaseFirstLetter(filter.value)}</FilterBadge>
               ))
             )
           ) : null}
@@ -94,11 +115,17 @@ function TaskCombobox({ title, filterList }: Props) {
             ))}
           </CommandGroup>
         </Command>
-        <Separator />
-        <div className="p-1">
-          <Button className="w-full font-normal" variant={'ghost'} onClick={clearAllFilters}>
-            Clear filters
-          </Button>
+        <div
+          className={classNames({
+            'hidden ': checkedFilters.length === 0,
+          })}
+        >
+          <Separator />
+          <div className="p-1">
+            <Button className="w-full font-normal" variant={'ghost'} onClick={clearAllFilters}>
+              Clear filters
+            </Button>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
