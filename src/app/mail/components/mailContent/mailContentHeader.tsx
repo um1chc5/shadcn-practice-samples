@@ -1,5 +1,5 @@
-import SlotTooltip from '@/components/custom/tooltipCustom'
-import { Separator } from '@/components/ui/separator'
+import SlotTooltip from 'src/components/custom/tooltipCustom'
+import { Separator } from 'src/components/ui/separator'
 import React from 'react'
 
 function MailContentHeader() {

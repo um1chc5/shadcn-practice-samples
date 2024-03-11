@@ -3,7 +3,13 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/
 import { TooltipContentProps, TooltipProps, TooltipProviderProps } from '@radix-ui/react-tooltip'
 
 interface Props extends TooltipProviderProps, TooltipProps, TooltipContentProps {
+  /**
+   * Icon or React Element that requires tooltip
+   */
   children: React.ReactNode
+  /**
+   * Tooltip content
+   */
   tooltip_content: string
 }
 

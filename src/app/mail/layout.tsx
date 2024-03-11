@@ -1,5 +1,5 @@
-import SideNav from '@/components/general/sidenav'
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
+import SideNav from 'src/components/general/sidenav'
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from 'src/components/ui/resizable'
 import React from 'react'
 import MailList from './components/mailList/mailList'
 

@@ -1,22 +1,16 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { emailsData } from '@/data/mockData'
-import { monthsFromNow } from '@/lib/utils'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import classNames from 'classnames'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { Input } from '@/components/ui/input'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { emailsData } from 'src/data/mockData'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from 'src/components/ui/tabs'
+import { Separator } from 'src/components/ui/separator'
+import { ScrollArea } from 'src/components/ui/scroll-area'
+import { Input } from 'src/components/ui/input'
+import MailCard from '../mailCard/mailCard'
 
 function MailList() {
   const [mailView, setMailView] = useState('all')
   const [mails, setMails] = useState(emailsData)
-  const pathname = usePathname()
 
   useEffect(() => {
     if (mailView === 'all') {
@@ -58,40 +52,7 @@ function MailList() {
         <ScrollArea className="h-[650px] px-4">
           <TabsContent value={mailView} className="flex flex-col gap-3 pb-8">
             {mails.map((mail, index) => (
-              <Link key={mail.id} href={`/mail/${mail.id}`}>
-                <Card
-                  className={classNames('gap-2 p-3 hover:bg-accent cursor-pointer', {
-                    'bg-accent': pathname === `/mail/${mail.id}`,
-                  })}
-                >
-                  <div>
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold">{mail.from.name}</h3>
-                        {!mail.read && <span className="h-2 w-2 rounded-full bg-blue-600"></span>}
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        {monthsFromNow(mail.time)} months ago
-                      </p>
-                    </div>
-                    <h4 className="text-xs font-medium">{mail.title}</h4>
-                  </div>
-                  <div>
-                    <p className="line-clamp-2 text-xs text-muted-foreground">{mail.content}</p>
-                  </div>
-                  <div>
-                    {mail.tag.map((tag) => (
-                      <Badge
-                        className="mr-2"
-                        key={tag}
-                        variant={tag === 'work' ? 'default' : 'secondary'}
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </Card>
-              </Link>
+              <MailCard key={index} mail={mail} />
             ))}
           </TabsContent>
         </ScrollArea>

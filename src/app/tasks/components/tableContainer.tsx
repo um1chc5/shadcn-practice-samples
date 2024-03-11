@@ -1,6 +1,6 @@
 'use client'
 
-import TaskCombobox from '@/components/custom/taskCombobox'
+import TaskCombobox from 'src/components/custom/taskCombobox'
 import { priorities, statusList } from '../data/tasksFilters'
 import ViewFilter from './viewFilter'
 import {

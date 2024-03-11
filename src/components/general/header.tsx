@@ -1,7 +1,7 @@
 'use client'
 
-import { path } from '@/constants/path'
-import { uppercaseFirstLetter } from '@/lib/utils'
+import { path } from 'src/constants/path'
+import { uppercaseFirstLetter } from 'src/lib/utils'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'

@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { priorities, statusList } from '../data/tasksFilters'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from 'src/components/ui/badge'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +8,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Button } from '@/components/ui/button'
+} from 'src/components/ui/dropdown-menu'
+import { Checkbox } from 'src/components/ui/checkbox'
+import { Button } from 'src/components/ui/button'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { Task } from '../types/task.type'
-import { uppercaseFirstLetter } from '@/lib/utils'
+import { uppercaseFirstLetter } from 'src/lib/utils'
 
 export const columns: ColumnDef<Task>[] = [
   {

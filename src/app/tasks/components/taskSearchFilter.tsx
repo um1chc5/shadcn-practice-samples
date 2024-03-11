@@ -1,8 +1,8 @@
-import { Input } from '@/components/ui/input'
+import { Input } from 'src/components/ui/input'
 import { Table } from '@tanstack/react-table'
 import React from 'react'
 import { Task } from '../types/task.type'
-import { debounce } from '@/lib/utils'
+import { debounce } from 'src/lib/utils'
 
 function TaskSearchFilter({ table }: { table: Table<Task> }) {
   const idCol = table.getColumn('id')

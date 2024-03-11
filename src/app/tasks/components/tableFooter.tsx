@@ -1,7 +1,7 @@
 import React from 'react'
 import { Task } from '../types/task.type'
 import { Table } from '@tanstack/react-table'
-import { Button } from '@/components/ui/button'
+import { Button } from 'src/components/ui/button'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -14,7 +14,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from 'src/components/ui/select'
 
 function TableFooter({ table }: { table: Table<Task> }) {
   return (

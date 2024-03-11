@@ -1,10 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Popover, PopoverContent, PopoverTrigger } from '../../../components/ui/popover'
+import React from 'react'
 import { Button } from '../../../components/ui/button'
-import { CheckIcon, MixerHorizontalIcon } from '@radix-ui/react-icons'
-import classNames from 'classnames'
+import { MixerHorizontalIcon } from '@radix-ui/react-icons'
 import { Separator } from '../../../components/ui/separator'
 import { Table } from '@tanstack/react-table'
 import { Task } from '../types/task.type'
@@ -13,18 +11,15 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { uppercaseFirstLetter } from '@/lib/utils'
+} from 'src/components/ui/dropdown-menu'
+import { uppercaseFirstLetter } from 'src/lib/utils'
 
 function ViewFilter({ table }: { table: Table<Task> }) {
-  const [open, setOpen] = useState(false)
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="ml-2" asChild>
         <Button
           role="combobox"
-          aria-expanded={open}
           variant="outline"
           className="py-0 h-[32px] space-x-1 px-3 focus-visible:ring-0"
         >

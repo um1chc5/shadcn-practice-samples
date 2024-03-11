@@ -1,4 +1,4 @@
-import { Separator } from '@/components/ui/separator'
+import { Separator } from 'src/components/ui/separator'
 import MailContentHeader from '../components/mailContent/mailContentHeader'
 import MailContentBody from '../components/mailContent/mailContentBody'
 

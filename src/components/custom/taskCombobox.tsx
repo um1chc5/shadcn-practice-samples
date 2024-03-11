@@ -4,25 +4,29 @@ import { PlusCircledIcon } from '@radix-ui/react-icons'
 import { Button } from '../ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '../ui/command'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import React from 'react'
 import { Checkbox } from '../ui/checkbox'
 import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
 import classNames from 'classnames'
 import { Table } from '@tanstack/react-table'
-import { Task } from '@/app/tasks/types/task.type'
-import { uppercaseFirstLetter } from '@/lib/utils'
+import { uppercaseFirstLetter } from 'src/lib/utils'
+import { Task } from 'src/app/tasks/types/task.type'
 
 interface Props {
   /**
-   * @Property title: title of specific filter, this title is same as the coresponding id in tanstack table column defs
+   * title: t itle of specific filter, this title is same as the coresponding id in tanstack table column defs
    */
   title: string
   /**
-   * @Property table: table instance created with useReactTable, providing table data and related methods
+   * table: table instance created with useReactTable, providing table data and related methods
    */
   table: Table<Task>
+
+  /**
+   * filterList: a list of filtering options that are related to the table
+   */
   filterList: ReadonlyArray<{
     id: number
     title: string
@@ -51,9 +55,6 @@ function TaskCombobox({ title, filterList, table }: Props) {
         filter.value === status_value ? { ...filter, checked: !filter.checked } : filter,
       ),
     )
-  }
-
-  useEffect(() => {
     table.setColumnFilters(
       checkedFilters
         .filter((filter) => filter.value)
@@ -62,8 +63,7 @@ function TaskCombobox({ title, filterList, table }: Props) {
           value: filter.value,
         })),
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [checkedList])
+  }
 
   const checkedFilters = useMemo(() => checkedList.filter((item) => item.checked), [checkedList])
 

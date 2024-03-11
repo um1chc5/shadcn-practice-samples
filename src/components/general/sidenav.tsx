@@ -4,7 +4,7 @@ import { Select } from '@radix-ui/react-select'
 import React, { useState } from 'react'
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { Separator } from '../ui/separator'
-import { emailIcons } from '@/data/mailIcons'
+import { emailIcons } from 'src/data/mailIcons'
 
 type EmailsType = keyof typeof emailIcons
 

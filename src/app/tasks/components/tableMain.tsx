@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from 'src/components/ui/table'
 import { Table as TableType, flexRender } from '@tanstack/react-table'
 import { Task } from '../types/task.type'
 
