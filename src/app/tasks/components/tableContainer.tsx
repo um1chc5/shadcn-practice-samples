@@ -51,7 +51,6 @@ function TableContainer() {
         <div className="ml-auto">
           <ViewFilter table={table} />
         </div>
-        setFilterValue
       </section>
       <TableMain table={table} />
       <TableFooter table={table} />
