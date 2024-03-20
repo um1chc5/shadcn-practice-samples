@@ -7,6 +7,7 @@ export default function Home() {
       <Separator />
       <div className="flex grow justify-center items-center">
         <h2 className="text-3xl font-semibold">Choose an inbox to begin</h2>
+        <p className="text-3xl font-semibold">Main branch</p>
       </div>
     </section>
   )
